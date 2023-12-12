@@ -1,4 +1,4 @@
-# ExamenParcial-CC3S2
+# ExamenFinal-CC3S2
 
 
 ## Parte2
@@ -108,38 +108,7 @@ En Rails, este código estará en la carpeta `app/views`.
 ### 8. Los sufijos de nombre de archivo para estas vistas son diferentes en Rails que en la aplicación Sinatra. ¿Qué información proporciona el sufijo situado más a la derecha del nombre del archivo (por ejemplo: en foobar.abc.xyz, el sufijo .xyz) sobre el contenido del archivo?
 El sufijo más a la derecha (.erb) indica el lenguaje de plantilla utilizado para procesar el contenido antes de renderizarlo. En el caso de .html.erb, .erb denota el uso del lenguaje de plantillas ERB y .html indica que se renderizará como HTML.
 
-### 9. ¿Qué información te brinda el otro sufijo sobre lo que se le pide a Rails que haga con el archivo?
-El sufijo anterior al .erb (como .html o .json) indica el formato en que Rails debería renderizar la salida después de procesar la plantilla. 
 
-### 10. ¿En qué archivo está la información de la aplicación Rails que asigna rutas (por ejemplo, GET/new) a las acciones del controlador?
-La información que asigna rutas a las acciones del controlador en una aplicación Rails se encuentra en el archivo `config/routes.rb`.
-
-### 11. ¿Cuál es el papel de la opción :as => 'name' en las declaraciones de ruta de config/routes.rb?
-La opción `:as => 'name'` se utiliza para nombrar una ruta. Esto permite referenciar la ruta en otras partes de la aplicación usando un nombre en lugar de la URL completa.
-
-
-### 12. En la versión de Sinatra, los bloques before do...end y after do...end se utilizan para la gestión de sesiones. ¿Cuál es el equivalente más cercano en esta aplicación Rails y en qué archivo encontramos el código que lo hace?
-En Rails, el equivalente a los bloques before y after de Sinatra son los filtros before_action y after_action. Estos se definen en el archivo app/controllers/game_controller.
-
-![image](https://github.com/Daniel349167/ExamenParcial-CC3S2/assets/62466867/bdaf9511-1665-4afc-8c16-efe7ae539c89)
-
-
-### 13. Un formato de serialización popular para intercambiar datos entre aplicaciones web es JSON. ¿Por qué no funcionaría utilizar JSON en lugar de YAML?
-JSON no maneja instancias de objetos Ruby o clases personalizadas tan bien como YAML. Usar JSON para ciertos objetos Ruby podría generar errores al intentar serializar o deserializar.
-
-### 14. En la versión de Sinatra, cada acción del controlador termina con redirect o con erb. ¿Por qué no hay llamadas explícitas correspondientes a erb en la versión Rails?
-En Rails, si no se especifica una respuesta explícita, Rails inferirá cuál vista renderizar basándose en el nombre de la acción del controlador y el controlador en sí. Por ejemplo, la acción show en GameController automáticamente buscará y renderizará app/views/game/show.html.erb.
-
-### 15. En la versión de Sinatra, codificamos directamente un formulario HTML usando la etiqueta <form>. ¿Se te ocurre alguna razón por la que Rails podría introducir este "nivel de direccionamiento indirecto"?
-Rails utiliza métodos como `form_tag` y `form_for` en lugar de la etiqueta <form> directa para mejorar la seguridad mediante tokens anti-CSRF, facilitar la vinculación con modelos, simplificando así la recopilación y validación de datos del formulario. Además, ayuda a mantener un código más ordenado y reutilizable.
-
-### 16. ¿Cómo se manejan los elementos del formulario, como campos de texto y botones, en Rails?
-En Rails, elementos individuales del formulario como campos de texto y botones se gestionan mediante "helpers" específicos como text_field, submit, check_box, etc. Estos "helpers" generan el HTML adecuado y simplifican la manipulación de datos.
-
-### 17. En la versión de Sinatra, las vistas de show, win y lose reutilizan el código en la vista new. ¿Qué mecanismo de Rails permite reutilizar esas vistas en la versión de Rails?
-Rails ofrece `partials`, que son fragmentos de vistas que se pueden reutilizar en diferentes vistas. Los "partials" se invocan con el método render.
-
-![image](https://github.com/Daniel349167/ExamenParcial-CC3S2/assets/62466867/49604ac3-b7eb-4c53-8969-06c9804792a3)
 
 ### 18. ¿Por qué no se modificaron los escenarios de Cucumber y las definiciones de pasos para que funcionen igualmente con Sinatra y Rails?
 Los escenarios de Cucumber y las definiciones de pasos se escriben en lenguaje Gherkin y Ruby, respectivamente. Por tanto, aunque se cambie el framework de Ruby, el código será el mismo siempre y cuando la funcionalidad y la interfaz de usuario o puntos finales de API se mantengan consistentes entre las diferentes versiones de la aplicación. Además, es importante señalar que los escenarios en lenguaje Gherkin son válidos para cualquier aplicación backend, no solo para los frameworks basados en Ruby.

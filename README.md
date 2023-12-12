@@ -96,18 +96,6 @@ El modelo de WordGuesserGame esta en el directorio `app/models`
 ### 4. ¿En qué archivo está el código que más se corresponde con la lógica del archivo app.rb de las aplicaciones Sinatra que maneja las acciones entrantes del usuario?
 La funcionalidad del archivo app.rb de Sinatra en una aplicación Rails se divide principalmente en dos archivos distintos. El primero es `config/routes.rb`, que se encarga de definir las rutas de la aplicación. El segundo es `controllers/game_controller.rb`, que proporciona la lógica y funcionalidad asociadas a esas rutas.
 
-### 5. ¿Qué clase contiene ese código?
-El código de la lógica se aloja en la clase `GameController`.
-
-### 6. ¿De qué otra clase (que es parte del framework Rails) hereda esa clase?
-GameController tiene como clase padre a `ApplicationController`.
-
-### 7. ¿En qué directorio está el código correspondiente a las vistas de la aplicación Sinatra (new.erb, show.erb, etc.)?
-En Rails, este código estará en la carpeta `app/views`.
-
-### 8. Los sufijos de nombre de archivo para estas vistas son diferentes en Rails que en la aplicación Sinatra. ¿Qué información proporciona el sufijo situado más a la derecha del nombre del archivo (por ejemplo: en foobar.abc.xyz, el sufijo .xyz) sobre el contenido del archivo?
-El sufijo más a la derecha (.erb) indica el lenguaje de plantilla utilizado para procesar el contenido antes de renderizarlo. En el caso de .html.erb, .erb denota el uso del lenguaje de plantillas ERB y .html indica que se renderizará como HTML.
-
 
 
 ### 18. ¿Por qué no se modificaron los escenarios de Cucumber y las definiciones de pasos para que funcionen igualmente con Sinatra y Rails?

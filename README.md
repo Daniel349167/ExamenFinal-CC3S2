@@ -272,10 +272,38 @@ release_date = Date.parse(first_movie["release_date"])
 - Verdadero o falso: para poder utilizar la API de TMDb desde otro lenguaje como Java, necesitas
 una librería Java equivalente a la gema ‘themoviedb-api`.
 
-Verdadero: Si bien no es estrictamente necesario tener una librería específica, tener una librería que actúe como un envoltorio de la API facilita mucho la interacción con la API, ya que maneja la construcción de las solicitudes, el manejo de errores, y el análisis de las respuestas por ti.
+**Verdadero:** Si bien no es estrictamente necesario tener una librería específica, tener una librería que actúe como un envoltorio de la API facilita mucho la interacción con la API, ya que maneja la construcción de las solicitudes, el manejo de errores, y el análisis de las respuestas por ti.
 
 - Verdadero o falso: para poder utilizar la API TMDb de otro lenguaje como Python, necesitas una librería de Python equivalente a la gema moviedb-api.  
 
-Falso: No necesitas necesariamente una librería específica; podrías interactuar directamente con la API usando solicitudes HTTP y manejo de JSON, lo que se puede hacer con las librerías estándar en la mayoría de los lenguajes de programación.
+**Falso:** No necesitas necesariamente una librería específica; podrías interactuar directamente con la API usando solicitudes HTTP y manejo de JSON, lo que se puede hacer con las librerías estándar en la mayoría de los lenguajes de programación.
+
+- agregamos esta prueba en un nuevo archivo spec\models\movie_spec.rb
+
+```ruby
+describe Movie do
+    describe 'searching Tmdb by keyword' do
+    it 'calls Faraday gem with ... domain' do
+    expect(Faraday).to receive(:get).with('https://api.themoviedb.org/3/search/movie?api_key=80bd9b4e4d174eb23d8078cff5857c49&query=Inception')
+
+    Movie.find_in_tmdb('https://api.themoviedb.org/3/search/movie?api_key=80bd9b4e4d174eb23d8078cff5857c49&query=Inception')
+    end
+ end
+end
+```
+- modificamos el método del modelo:
+
+```ruby
+def self.find_in_tmdb(string)
+ Faraday.get(string)
+end
+
+```
+- Las pruebas son exitosas:
+  
+![image](https://github.com/Daniel349167/ExamenFinal-CC3S2/assets/62466867/2a5e8578-8265-45b8-871e-650eb4305071)
+
+### Paso 5:
+
 
 

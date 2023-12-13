@@ -59,7 +59,36 @@ Por tanto, si el caso involucra la ejecución de código representado como caden
 
 - Se añade un boton a la vista principal para ir a la nueva vista buscar, también se añade un boton a la nueva vista para poder regresar a la vista principal, se completa el controlador, la ruta y el form_tag para que funcione correctamente:
 
-![image](https://github.com/Daniel349167/ExamenFinal-CC3S2/assets/62466867/194428f0-3857-4cb2-a688-d4e1ab80f3c4)
+```ruby
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+<h2>Search in TMDb</h2>
+
+<div class="search-container">
+  <%= form_tag search_tmdb_path, id: 'tmdb_form' do %>
+      <label for="searchMovieName">Movie Name</label>
+      <%= text_field_tag 'title', nil, class: "form-control", id: "movie_title_field", placeholder: "Manhunter" %>
+      <label for="searchReleaseDateField">Release Year</label>
+      <%= text_field_tag 'release_year', nil, class: "form-control", id: "movie_year_field", placeholder: "1986" %>
+
+    <div class="form-check">
+      <%= radio_button_tag 'language', 'en', false, class: "form-check-input" %>
+      <label class="form-check-label" for="language_en">English Only</label>
+    </div>
+
+    <div class="form-check">
+      <%= radio_button_tag 'language', 'all', true, class: "form-check-input" %>
+      <label class="form-check-label" for="language_all">All Languages</label>
+    </div>
+    <%= submit_tag 'Search', id: 'tmdb_submit', class: 'btn btn-warning col-2' %>
+
+  <% end %>
+
+  <%= link_to 'Home', root_path, class: 'btn btn-primary' %>
+</div>
+```
+
 
 ![image](https://github.com/Daniel349167/ExamenFinal-CC3S2/assets/62466867/771995e2-9520-41f8-9589-afcd35cfd0c0)
 

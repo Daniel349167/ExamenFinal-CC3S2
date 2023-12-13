@@ -1,4 +1,4 @@
-# ExamenFinal.
+# ExamenFinal
 
 ## Parte1
 
@@ -26,10 +26,38 @@
 
 - Se realizo el push con exito.
 
-### Pregunta 2
+### Pregunta 5
 
 
 ## Parte2
+
+- Instalando las nuevas gemas:
+
+![image](https://github.com/Daniel349167/ExamenFinal-CC3S2/assets/62466867/2c597d69-4a8c-4146-8caa-80cd19f05981)
+
+- generando los archivos rspec:
+
+![image](https://github.com/Daniel349167/ExamenFinal-CC3S2/assets/62466867/bf5ed174-d00b-4cd6-acba-de87cfa10784)
+
+- configurando la base de datos:
+
+![image](https://github.com/Daniel349167/ExamenFinal-CC3S2/assets/62466867/b2f3e961-0684-47c9-a44a-da94c6b89e61)
+
+-ejecutando el servidor con 'rails server':
+
+![image](https://github.com/Daniel349167/ExamenFinal-CC3S2/assets/62466867/7df9436a-3ead-41a0-b868-3917aabcd8d1)
+
+
+
+
+
+
+
+
+
+
+
+
 ![image](https://github.com/Daniel349167/ExamenParcial-CC3S2/assets/62466867/23316343-cd5f-4c90-b0da-07b5f666679e)
 
  ![image](https://github.com/Daniel349167/ExamenParcial-CC3S2/assets/62466867/4e13725c-62f7-4691-96df-b6f2e268d895)

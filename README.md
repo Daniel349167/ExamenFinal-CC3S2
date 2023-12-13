@@ -147,7 +147,7 @@ Rottenpotatoes::Application.routes.draw do
 
 ![image](https://github.com/Daniel349167/ExamenFinal-CC3S2/assets/62466867/551798f4-1d07-42b3-a58b-12659b4397d7)
 
-- agregando a la prueba:
+- agregando al archivo de pruebas:
 
 ```ruby
 it 'calls the model method that performs TMDb search' do
@@ -177,7 +177,7 @@ def search_tmdb
 ![image](https://github.com/Daniel349167/ExamenFinal-CC3S2/assets/62466867/1c6deb77-52f0-4f34-9333-7b7150049464)
 
 ### Paso 3:
-- agregamos el siguiente código al archivo:
+- agregamos el siguiente código al archivo de pruebas 'movies_controller_spec.rb':
 
 ```ruby
 describe MoviesController do

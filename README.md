@@ -57,17 +57,5 @@
 
 ![image](https://github.com/Daniel349167/ExamenFinal-CC3S2/assets/62466867/69997e37-478d-4752-bf38-5da070936233)
 
-
-
-
-
-
-
-
-
-
-
-
-
-Los escenarios de Cucumber y las definiciones de pasos se escriben en lenguaje Gherkin y Ruby, respectivamente. Por tanto, aunque se cambie el framework de Ruby, el código será el mismo siempre y cuando la funcionalidad y la interfaz de usuario o puntos finales de API se mantengan consistentes entre las diferentes versiones de la aplicación. Además, es importante señalar que los escenarios en lenguaje Gherkin son válidos para cualquier aplicación backend, no solo para los frameworks basados en Ruby.
+- 
 

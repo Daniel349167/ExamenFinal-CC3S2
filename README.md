@@ -238,3 +238,44 @@ end
 
 ### Paso 4:
 
+-obteniendo mi Api key en la plataforma:
+
+![image](https://github.com/Daniel349167/ExamenFinal-CC3S2/assets/62466867/b286bb7b-70e8-4086-a616-50803d7c4c62)
+
+- Probando con curl:
+
+![image](https://github.com/Daniel349167/ExamenFinal-CC3S2/assets/62466867/cea472e7-65a5-47d3-abae-a987d683260f)
+
+- Poniendo la misma url en el navegador:
+
+![image](https://github.com/Daniel349167/ExamenFinal-CC3S2/assets/62466867/17072b2f-7cb9-4e9e-8403-f5c2483baa4a)
+
+- ¿Qué expresión de Ruby devolvería el primer elemento de la lista de películas coincidentes?
+
+```ruby
+parsed_json = JSON.parse(response_body)
+first_movie = parsed_json["results"].first
+```
+  
+- ¿Qué expresión de Ruby establecería la variable overview del primer resultado de búsqueda?
+
+```ruby
+overview = first_movie["overview"]
+```
+
+- ¿Qué expresión de Ruby devolvería la fecha de lanzamiento del primer resultado de búsqueda, como un objeto Ruby Date? (Sugerencia: Rails tiene algunas extensiones convenientes para ayudar a administrar objetos de fecha y hora.
+
+```ruby
+release_date = Date.parse(first_movie["release_date"])
+```
+
+- Verdadero o falso: para poder utilizar la API de TMDb desde otro lenguaje como Java, necesitas
+una librería Java equivalente a la gema ‘themoviedb-api`.
+
+Verdadero: Si bien no es estrictamente necesario tener una librería específica, tener una librería que actúe como un envoltorio de la API facilita mucho la interacción con la API, ya que maneja la construcción de las solicitudes, el manejo de errores, y el análisis de las respuestas por ti.
+
+- Verdadero o falso: para poder utilizar la API TMDb de otro lenguaje como Python, necesitas una librería de Python equivalente a la gema moviedb-api.  
+
+Falso: No necesitas necesariamente una librería específica; podrías interactuar directamente con la API usando solicitudes HTTP y manejo de JSON, lo que se puede hacer con las librerías estándar en la mayoría de los lenguajes de programación.
+
+

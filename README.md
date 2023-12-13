@@ -27,6 +27,14 @@
 - Se realizo el push con exito.
 
 ### Pregunta 5
+#### Se usa eval cuando:
+- Necesitas ejecutar código que se construye o modifica en tiempo de ejecución y cuya estructura no se conoce de antemano
+- En entornos controlados y para prototipos rápidos donde la seguridad y el mantenimiento a largo plazo no son preocupaciones principales
+#### Se usa bloques cuando:
+- Cuando necesitas flexibilidad en la generación de código pero también quieres mantener un alto grado de seguridad y prevenir la ejecución de código arbitrario.
+- En proyectos a largo plazo donde la legibilidad y el mantenimiento del código son importantes.
+
+Por tanto, si el caso involucra la ejecución de código representado como cadena de texto y que solo se conoce en tiempo de ejecución, eval sería lo recomendado en lugar de metaprogramación por bloques.
 
 
 ## Parte2
@@ -57,5 +65,8 @@
 
 ![image](https://github.com/Daniel349167/ExamenFinal-CC3S2/assets/62466867/69997e37-478d-4752-bf38-5da070936233)
 
-- 
+- creando las pruebas, aún no implementadas:
+
+![image](https://github.com/Daniel349167/ExamenFinal-CC3S2/assets/62466867/fbc86bfc-a707-4fe0-ab37-8b48a46a720d)
+
 

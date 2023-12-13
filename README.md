@@ -99,3 +99,142 @@ Por tanto, si el caso involucra la ejecución de código representado como caden
 ![image](https://github.com/Daniel349167/ExamenFinal-CC3S2/assets/62466867/fbc86bfc-a707-4fe0-ab37-8b48a46a720d)
 
 
+
+### Paso 2:
+- Copiamos la prueba y ponemos el codigo de validación para que no salga error:
+```ruby
+require 'rails_helper'
+
+
+if RUBY_VERSION>='2.6.0'
+    if Rails.version < '5'
+      class ActionController::TestResponse < ActionDispatch::TestResponse
+        def recycle!
+          # hack to avoid MonitorMixin double-initialize error:
+          @mon_mutex_owner_object_id = nil
+          @mon_mutex = nil
+          initialize
+        end
+      end
+    else
+      puts "Monkeypatch for ActionController::TestResponse no longer needed"
+    end
+  end
+  
+
+describe MoviesController do
+ describe 'searching TMDb' do
+    it 'calls the model method that performs TMDb search' do
+        get :search_tmdb, {:search_terms => 'hardware'}
+        expect(response).to render_template('movies/search_tmdb')
+    end
+       
+    it 'selects the Search Results template for rendering'
+    it 'makes the TMDb search results available to that template'
+ end
+end
+-  definimos la ruta:
+
+```ruby
+Rottenpotatoes::Application.routes.draw do
+    resources :movies
+    get '/search_tmdb', to: 'movies#search_tmdb'
+    # map '/' to be a redirect to '/movies'
+    root :to => redirect('/movies')
+  end
+```
+-  No aparece en verde pero no falla la prueba:
+
+![image](https://github.com/Daniel349167/ExamenFinal-CC3S2/assets/62466867/551798f4-1d07-42b3-a58b-12659b4397d7)
+
+- agregando a la prueba:
+
+```ruby
+it 'calls the model method that performs TMDb search' do
+ fake_results = [double('movie1'), double('movie2')]
+ expect(Movie).to receive(:find_in_tmdb).with('hardware').
+ and_return(fake_results)
+ get :search_tmdb, {:search_terms => 'hardware'}
+end
+```
+- agregando al modelo el método:
+```ruby
+def self.find_in_tmdb(search_terms)
+  
+end
+```
+
+- agregando al controlador la llamada al método
+
+```ruby
+def search_tmdb
+      @movies = Movie.find_in_tmdb(params[:search_terms])
+      render 'movies/search_tmdb'
+    end
+```
+- la prueba pasa satisfactoriamente, ya que no hay failures:
+  
+![image](https://github.com/Daniel349167/ExamenFinal-CC3S2/assets/62466867/1c6deb77-52f0-4f34-9333-7b7150049464)
+
+### Paso 3:
+- agregamos el siguiente código al archivo:
+
+```ruby
+describe MoviesController do
+  describe 'searching TMDb' do
+    before :each do
+    @fake_results = [double('movie1'), double('movie2')]
+    end
+    it 'calls the model method that performs TMDb search' do
+    expect(Movie).to receive(:find_in_tmdb).with('hardware').
+    and_return(@fake_results)
+    get :search_tmdb, {:search_terms => 'hardware'}
+    end
+    describe 'after valid search' do
+    before :each do
+    allow(Movie).to receive(:find_in_tmdb).and_return(@fake_results)
+    get :search_tmdb, {:search_terms => 'hardware'}
+    end
+    it 'selects the Search Results template for rendering' do
+    expect(response).to render_template('search_tmdb')
+    end
+    it 'makes the TMDb search results available to that template' do
+    expect(assigns(:movies)).to eq(@fake_results)
+    end
+    end
+ end
+end
+```
+
+#### 1.  ¿De qué tipo de objeto crees que @fake_results es una variable de instancia? (Dicho de otra manera, ¿cuál crees que es el valor de self dentro de un bloque de código de prueba?)
+
+@fake_results es una variable de instancia del objeto RSpec::ExampleGroup. Cada grupo de pruebas definido por un bloque describe o context en RSpec se ejecuta en el contexto de una instancia de RSpec::ExampleGroup, que es una clase que RSpec define internamente para representar un grupo de ejemplos (pruebas)
+
+#### 2. explica las línes 5-7, 14-17, 18-20. ¿Hacemos stubbing?
+
+- Líneas 5-7: Se define @fake_results, que es un arreglo de dobles de prueba (objetos simulados) que se utilizarán en las expectativas para simular los resultados de una búsqueda en la base de datos de películas. Esta variable de instancia es accesible en todas las pruebas dentro del grupo 'describe'.
+
+- Líneas 14-17: Este bloque establece la expectativa de que cuando se haga una llamada al método find_in_tmdb del modelo Movie, devolverá @fake_results. Luego, se realiza una solicitud GET al controlador, simulando una búsqueda con el término 'hardware'.
+
+- Líneas 18-20 (it 'selects the Search Results template for rendering'): Esta prueba verifica que después de realizar la búsqueda, el controlador intenta renderizar la plantilla de vista search_tmdb. Esto se confirma utilizando el método render_template.
+
+- El término "stubbing" se refiere al acto de reemplazar un método con una versión simplificada que devuelve un valor predeterminado. En este contexto, se está haciendo stubbing del método find_in_tmdb para que, en lugar de realizar una búsqueda real, devuelva simplemente @fake_results.
+
+#### 3.  Especifica cuales son las construccionesde RSpec se utiliza para (a) crear un seam, (b) determinar el comportamiento de un seam.
+
+- Un "seam" es un punto en el código donde se puede alterar el comportamiento sin modificar en sí el código. En las pruebas, se crea un seam utilizando técnicas como el stubbing o los dobles de prueba. En este caso, se crea un seam utilizando allow(Movie).to receive(:find_in_tmdb).and_return(@fake_results) para que el código del controlador llame a find_in_tmdb como si fuera un método real del modelo Movie.
+
+- Se determina el comportamiento de un seam estableciendo expectativas sobre los dobles de prueba, como se hace con expect(Movie).to receive(:find_in_tmdb).with('hardware').
+  
+#### 4.  ¿Por qué suele ser preferible utilizar before(:each) en lugar de before(:all)?. Explica un caso de ejemplo
+
+- before(:each) es generalmente preferido sobre before(:all) porque before(:each) se ejecuta antes de cada prueba, garantizando que cada prueba se ejecute con un estado limpio y sin dependencias de las ejecuciones de pruebas anteriores. before(:all), por otro lado, ejecuta el código de configuración una sola vez al comienzo de todas las pruebas en el grupo, lo que podría llevar a que las pruebas subsiguientes fallen debido a cambios en el estado compartido.
+
+- Pasa las pruebas:
+
+![image](https://github.com/Daniel349167/ExamenFinal-CC3S2/assets/62466867/20a1006e-e733-4055-8d09-fdadae419c72)
+
+
+
+### Paso 4:
+

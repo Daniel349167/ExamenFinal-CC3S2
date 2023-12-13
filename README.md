@@ -1,4 +1,32 @@
-# ExamenFinal
+# ExamenFinal.
+
+## Parte1
+
+### Pregunta 1
+
+- Este error ocurre al querer hacer push a una rama que ya tiene otros cambios de otros colaboradores:
+
+![image](https://github.com/Daniel349167/ExamenFinal-DesarrolloSoftware/assets/62466867/fc636735-12ba-4619-8511-fa502f0c189a)
+
+- La solución es hacer pull ha sus cambios para juntarlos y haiga uniformidad en el código:
+
+![image](https://github.com/Daniel349167/ExamenFinal-DesarrolloSoftware/assets/62466867/db774b17-bd91-48f6-9ce1-73512c1c544c)
+
+- En este caso me salió otro error ya que ambos hicimos cambios en el mismo archivo, resolvemos el conflicto en el editor:
+
+![image](https://github.com/Daniel349167/ExamenFinal-DesarrolloSoftware/assets/62466867/209d4be1-af4a-4a42-ba9d-cbba7885c51f)
+
+- guardamos nuevamente el commit y ya estarían nuestras ramas sincronizadas:
+
+![image](https://github.com/Daniel349167/ExamenFinal-DesarrolloSoftware/assets/62466867/a3b30dc6-4b3e-4d64-a98c-dcfa9a5344b6)
+
+- Por último hacemos push:
+
+![image](https://github.com/Daniel349167/ExamenFinal-DesarrolloSoftware/assets/62466867/2ad94503-da9f-4883-9461-befc9716218e)
+
+- Se realizo el push con exito.
+
+### Pregunta 2
 
 
 ## Parte2

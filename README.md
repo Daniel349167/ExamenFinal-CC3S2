@@ -84,7 +84,7 @@ end
 ### Pregunta 4
 Para realizar una solicitud HTTP POST con AJAX usando jQuery cuando se envía el formulario, se debe primero prevenir el envío normal del formulario y luego enviar los datos a través de AJAX.
 
-- completamos el código(La explicación esta en el mismo código):
+- completamos el código (La explicación esta en el mismo código):
 ```ruby
 <form method="POST" id="loginForm">
     <input type="text" class="user" />

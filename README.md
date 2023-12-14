@@ -372,4 +372,27 @@ def search_tmdb
 
 ![image](https://github.com/Daniel349167/ExamenFinal-CC3S2/assets/62466867/8b4cd54e-c576-40fc-bcd7-ef5b800ce693)
 
+- Para añadir una película de las que arroja la busqueda a la bd de nuestra aplicación, se usa el siguiente código:
+
+**en el controlador**
+```ruby
+def add_movie
+      Movie.create!(movie_params)
+      redirect_to movies_path, notice: "#{params[:title]} was successfully added to RottenPotatoes."
+end
+```
+**en la vista**
+```ruby
+<td class="align-middle">
+              <%= form_tag add_movie_path, method: :post, class: "form-inline" do %>
+                <%= hidden_field_tag 'title', movie['title'] %>
+                <%= hidden_field_tag 'release_date', movie['release_date'] %>
+                <%= hidden_field_tag 'rating', movie['rating'] || 'R' %>
+                <%= submit_tag 'Add Movie', class: 'btn btn-primary' %>
+              <% end %>
+</td>
+```
+
+- Resultado:
+![image](https://github.com/Daniel349167/ExamenFinal-CC3S2/assets/62466867/cadb7edb-60ba-4521-8819-7ec230ce6356)
 

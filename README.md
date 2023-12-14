@@ -309,6 +309,24 @@ end
 
 ![image](https://github.com/Daniel349167/ExamenFinal-CC3S2/assets/62466867/bd665d73-1015-42d3-a0d7-7a2cce92505d)
 
+- Para agregar los mensajes de validacion para cuando no llenan todos los campos o cuando no hay resultados de busqueda, agregamos el siguiente codigo:
 
--
+```ruby
+def search_tmdb
+      if params[:title].present?
+        @movies = Movie.find_in_tmdb(search_params)
+        flash.now[:warning] = "¡No movies found with given parameters!" if @movies.empty?
+      else
+        flash.now[:alert] = "Please fill in all required fields!"
+        @movies = []
+      end
+    end
+```
+
+- Resultado:
+
+![image](https://github.com/Daniel349167/ExamenFinal-CC3S2/assets/62466867/db22ff0e-f369-41f9-bf2f-422323073b74)
+
+![image](https://github.com/Daniel349167/ExamenFinal-CC3S2/assets/62466867/1345e679-f375-498a-8bf6-3a4bb72d9764)
+
 

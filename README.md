@@ -241,7 +241,7 @@ Rottenpotatoes::Application.routes.draw do
     root :to => redirect('/movies')
   end
 ```
--  No aparece en verde pero no falla la prueba:
+-  La prueba definida pasa, y hay 2 pruebas aún no implementadas:
 
 ![image](https://github.com/Daniel349167/ExamenFinal-CC3S2/assets/62466867/551798f4-1d07-42b3-a58b-12659b4397d7)
 

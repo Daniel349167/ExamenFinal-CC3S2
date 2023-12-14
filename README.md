@@ -305,5 +305,10 @@ end
 
 ### Paso 5:
 
+- agregando la gema webmock:
 
+![image](https://github.com/Daniel349167/ExamenFinal-CC3S2/assets/62466867/bd665d73-1015-42d3-a0d7-7a2cce92505d)
+
+
+-
 

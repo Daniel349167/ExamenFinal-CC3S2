@@ -372,7 +372,7 @@ def search_tmdb
 
 ![image](https://github.com/Daniel349167/ExamenFinal-CC3S2/assets/62466867/8b4cd54e-c576-40fc-bcd7-ef5b800ce693)
 
-- Para añadir una película de las que arroja la busqueda a la bd de nuestra aplicación, se usa el siguiente código:
+- Para añadir una película de las que arroja la búsqueda, a la bd de nuestra aplicación, se usa el siguiente código:
 
 **en el controlador**
 ```ruby

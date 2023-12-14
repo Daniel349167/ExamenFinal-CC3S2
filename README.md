@@ -309,7 +309,7 @@ end
 
 ![image](https://github.com/Daniel349167/ExamenFinal-CC3S2/assets/62466867/bd665d73-1015-42d3-a0d7-7a2cce92505d)
 
-- Para agregar los mensajes de validacion para cuando no llenan todos los campos o cuando no hay resultados de busqueda, agregamos el siguiente codigo:
+- Para agregar los mensajes de validación para cuando no llenan todos los campos o cuando no hay resultados de búsqueda, agregamos el siguiente código:
 
 ```ruby
 def search_tmdb
@@ -323,10 +323,53 @@ def search_tmdb
     end
 ```
 
-- Resultado:
+- Resultados:
 
 ![image](https://github.com/Daniel349167/ExamenFinal-CC3S2/assets/62466867/db22ff0e-f369-41f9-bf2f-422323073b74)
 
 ![image](https://github.com/Daniel349167/ExamenFinal-CC3S2/assets/62466867/1345e679-f375-498a-8bf6-3a4bb72d9764)
+
+- Para que los resultados de búsqueda se muestren en una tabla, agregamos el siguiente código al final del archivo search_tmdb.html.erb:
+
+```ruby
+<% if @movies.present? %>
+  <h1 class="mt-4">Search Results</h1> <!-- Título de la sección -->
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th class="text-center">Movie Title</th>
+        <th class="text-center">Rating</th>
+        <th class="text-center">Release Date</th>
+        <th>Synopsis</th>
+        <th></th> 
+      </tr>
+    </thead>
+    <tbody>
+      <% @movies.each do |movie| %>
+        <tr>
+          <td class="align-middle text-center"><%= movie['title'] %></td>
+          <td class="align-middle text-center" style="width: 5%;"><%= movie['rating'] || 'R' %></td> 
+          <td class="align-middle text-center" style="width: 15%;"><%= movie['release_date'] %></td>
+          <td class="align-middle" style="width: 55%;"><%= movie['overview'] %></td>
+          <td class="align-middle">
+              <%= form_tag add_movie_path, method: :post, class: "form-inline" do %>
+                <%= hidden_field_tag 'title', movie['title'] %>
+                <%= hidden_field_tag 'release_date', movie['release_date'] %>
+                <%= hidden_field_tag 'rating', movie['rating'] || 'R' %>
+                <%= submit_tag 'Add Movie', class: 'btn btn-primary' %>
+              <% end %>
+          </td>
+          
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% end %>
+```
+
+
+- Resultado:
+
+![image](https://github.com/Daniel349167/ExamenFinal-CC3S2/assets/62466867/8b4cd54e-c576-40fc-bcd7-ef5b800ce693)
 
 

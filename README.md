@@ -26,6 +26,62 @@
 
 - Se realizo el push con exito.
 
+### Pregunta 2
+#### 1. ¿Qué pasa si tenemos @user sin nombre de usuario y llamamos a @user.valid? ¿Qué guardará @user.save?
+Si tenemos un objeto @user sin un nombre de usuario (username) y llamamos a @user.valid?, el resultado será false. Esto se debe a que la validación validates :username, :presence => true asegura que el atributo username debe estar presente. Si username no está presente, la validación falla.
+
+Si intentamos guardar este objeto con @user.save, el registro no se guardará en la base de datos. save devuelve false si el objeto no es válido, lo cual es el caso aquí debido a la falta de un username.
+
+#### 2. Implementación de username_format
+
+```ruby
+class User < ActiveRecord::Base
+  validates :username, presence: true
+  validate :username_format
+
+  private
+
+  def username_format
+    unless username =~ /^[A-Za-z][A-Za-z0-9]{0,9}$/
+      errors.add(:username, "debe comenzar con una letra y tener un máximo de 10 caracteres")
+    end
+  end
+end
+```
+
+- validate :username_format indica que se usará el método username_format para la validación personalizada.
+- El método username_format utiliza una expresión regular (/^[A-Za-z][A-Za-z0-9]{0,9}$/) para verificar el formato del username.
+- ^[A-Za-z] asegura que el nombre de usuario comience con una letra.
+- [A-Za-z0-9]{0,9} permite hasta 9 caracteres adicionales que pueden ser letras o números, resultando en un máximo de 10 caracteres en total.
+- Si el formato no es el correcto, se agrega un mensaje de error a errors con errors.add(:username, "mensaje").
+
+### Pregunta 3
+
+- El filtro before_filter :check_admin verifica si el usuario (@user) es administrador antes de permitir que se ejecute cualquier acción en este controlador. Si el usuario no es administrador, entonces se debe redirigir a la página de inicio de sesión de administrador con un mensaje de acceso restringido.
+  
+- Completamos el código:
+
+```ruby
+class AdminController < ApplicationController
+  before_action :check_admin
+
+  private
+
+  def check_admin
+    unless @user.admin?
+      redirect_to admin_login_path, alert: "Acceso restringido: solo para administradores"
+    end
+  end
+end
+```
+
+- before_action :check_admin: Esto establece que el método check_admin se debe ejecutar antes de cualquier acción en este controlador.
+
+- check_admin es un método privado que verifica si el atributo admin de @user es true.
+
+- unless @user.admin? verifica si @user no es administrador.
+
+### Pregunta 4
 ### Pregunta 5
 #### Se usa eval cuando:
 - Necesitas ejecutar código que se construye o modifica en tiempo de ejecución y cuya estructura no se conoce de antemano

@@ -336,7 +336,7 @@ end
 
 ### Paso 4:
 
--obteniendo mi Api key en la plataforma:
+- Obteniendo mi Api key en la plataforma:
 
 ![image](https://github.com/Daniel349167/ExamenFinal-CC3S2/assets/62466867/b286bb7b-70e8-4086-a616-50803d7c4c62)
 
@@ -344,7 +344,7 @@ end
 
 ![image](https://github.com/Daniel349167/ExamenFinal-CC3S2/assets/62466867/cea472e7-65a5-47d3-abae-a987d683260f)
 
-- Poniendo la misma url en el navegador:
+- Probando en el navegador:
 
 ![image](https://github.com/Daniel349167/ExamenFinal-CC3S2/assets/62466867/17072b2f-7cb9-4e9e-8403-f5c2483baa4a)
 

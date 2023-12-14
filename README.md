@@ -304,6 +304,11 @@ describe MoviesController do
 end
 ```
 
+- Pasa las pruebas:
+
+![image](https://github.com/Daniel349167/ExamenFinal-CC3S2/assets/62466867/20a1006e-e733-4055-8d09-fdadae419c72)
+
+
 #### 1.  ¿De qué tipo de objeto crees que @fake_results es una variable de instancia? (Dicho de otra manera, ¿cuál crees que es el valor de self dentro de un bloque de código de prueba?)
 
 @fake_results es una variable de instancia del objeto RSpec::ExampleGroup. Cada grupo de pruebas definido por un bloque describe o context en RSpec se ejecuta en el contexto de una instancia de RSpec::ExampleGroup, que es una clase que RSpec define internamente para representar un grupo de ejemplos (pruebas)
@@ -324,14 +329,9 @@ end
 
 - Se determina el comportamiento de un seam estableciendo expectativas sobre los dobles de prueba, como se hace con expect(Movie).to receive(:find_in_tmdb).with('hardware').
   
-#### 4.  ¿Por qué suele ser preferible utilizar before(:each) en lugar de before(:all)?. Explica un caso de ejemplo
+#### 4.  ¿Por qué suele ser preferible utilizar before(:each) en lugar de before(:all)?
 
 - before(:each) es generalmente preferido sobre before(:all) porque before(:each) se ejecuta antes de cada prueba, garantizando que cada prueba se ejecute con un estado limpio y sin dependencias de las ejecuciones de pruebas anteriores. before(:all), por otro lado, ejecuta el código de configuración una sola vez al comienzo de todas las pruebas en el grupo, lo que podría llevar a que las pruebas subsiguientes fallen debido a cambios en el estado compartido.
-
-- Pasa las pruebas:
-
-![image](https://github.com/Daniel349167/ExamenFinal-CC3S2/assets/62466867/20a1006e-e733-4055-8d09-fdadae419c72)
-
 
 
 ### Paso 4:

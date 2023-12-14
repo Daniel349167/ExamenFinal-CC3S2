@@ -82,6 +82,48 @@ end
 - unless @user.admin? verifica si @user no es administrador.
 
 ### Pregunta 4
+Para realizar una solicitud HTTP POST con AJAX usando jQuery cuando se envía el formulario, se debe primero prevenir el envío normal del formulario y luego enviar los datos a través de AJAX.
+
+- completamos el código(La explicación esta en el mismo código):
+```ruby
+<form method="POST" id="loginForm">
+    <input type="text" class="user" />
+    <input type="password" class="pass" />
+    <input type="button" value="Log in" id="onSubmit" />
+</form>
+
+<script>
+$(document).ready(function() {
+    $("#onSubmit").click(function() {
+        // Prevenir el envío normal del formulario
+        event.preventDefault();
+
+        // Recoger los datos del formulario
+        var username = $('.user').val();
+        var password = $('.pass').val();
+
+        // Realizar la solicitud POST con AJAX
+        $.ajax({
+            type: "POST",
+            url: "/tu_url_de_autenticacion", // URL a la que se enviarán los datos
+            data: {
+                user: username,
+                pass: password
+            },
+            success: function(response) {
+                // Esta es la función de devolución de llamada para cuando la solicitud tiene éxito
+                // 'response' contiene lo que el servidor devuelve
+                console.log("Inicio de sesión exitoso", response);
+            },
+            error: function(xhr, status, error) {
+                // Esta es la función de devolución de llamada para cuando hay un error en la solicitud
+                console.error("Error en el inicio de sesión", xhr, status, error);
+            }
+        });
+    });
+});
+</script>
+```
 ### Pregunta 5
 #### Se usa eval cuando:
 - Necesitas ejecutar código que se construye o modifica en tiempo de ejecución y cuya estructura no se conoce de antemano

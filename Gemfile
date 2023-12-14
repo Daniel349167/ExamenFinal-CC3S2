@@ -1,23 +1,35 @@
 source 'https://rubygems.org'
 
 ruby '2.6.6'
-
-# Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.11'
 
-group :development, :test do
-  # Call 'byebug' anywhere in the code to stop execution and get a debugger console
-  gem 'byebug'
-end
 
-group :development do
-  # Access an IRB console on exception pages or by using <%= console %> in views
-  gem 'web-console', '~> 2.0'
-end
+gem 'sass-rails', '~> 5.0.3'
+gem 'uglifier', '>= 2.7.1'
 
+gem 'jquery-rails'
+gem 'faraday'
 group :test do
-  gem 'cucumber-rails', :require => false
-  gem 'rspec-rails'
-  gem 'webmock'
+ gem 'rails-controller-testing'
+ gem 'guard-rspec'
 end
 
+gem "webmock"
+# for Heroku deployment - as described in Ap. A of ELLS book
+group :development, :test do
+  gem 'byebug'
+  gem 'database_cleaner'
+  gem 'cucumber-rails', require: false
+  gem 'rspec-rails'
+  gem 'pry'
+  gem 'pry-byebug'
+
+  # Use sqlite3 as the database for Active Record
+  gem 'sqlite3', '~> 1.3.6'
+  gem 'web-console', group: :development
+end
+
+group :production do
+  gem 'pg', '~> 0.2'
+  gem 'rails_12factor'
+end

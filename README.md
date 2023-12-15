@@ -494,6 +494,6 @@ end
 - Resultado:
 ![image](https://github.com/Daniel349167/ExamenFinal-CC3S2/assets/62466867/cadb7edb-60ba-4521-8819-7ec230ce6356)
 
-## Despliegue(Adicional)
+## Despliegue en Render(Adicional)
 
 - [https://examen-final-q8ap.onrender.com](https://examen-final-q8ap.onrender.com)
